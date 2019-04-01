@@ -15,7 +15,6 @@ func main() {
 	// fmt.Println(e)
 	// fmt.Println(f,g)
 
-
 	// var r1 = 1
 	// var r2 = 1
 	// fmt.Println(&r1,&r2)
@@ -43,7 +42,6 @@ func main() {
 	// )
 	// fmt.Println(d, e, f)
 
-
 	// const (
 	//            a = iota   //0
 	//            b          //1
@@ -58,10 +56,8 @@ func main() {
 	//    fmt.Println(a,b,c,d,e,f,g,h,i)
 	//    fmt.Printf("this is a %d \n",a)
 
-
 	// var a [10] int
 	// fmt.Println(len(a))
-
 
 	// var a = [5] int {1,2,3,4,5}
 	// a[0] = 22
@@ -143,13 +139,13 @@ func main() {
 	//    phone = new(NokiaPhone)
 	//    phone.call()
 
-	s := [] int{7, 2, 8, -9, 4, 0}
-	c := make(chan int)
-
-	go sum(s[:len(s)/2], c)
-	go sum(s[len(s)/2:], c)
-	x, y := <-c, <-c
-	fmt.Println(x,y,x + y)
+	//s := [] int{7, 2, 8, -9, 4, 0}
+	//c := make(chan int)
+	//
+	//go sum(s[:len(s)/2], c)
+	//go sum(s[len(s)/2:], c)
+	//x, y := <-c, <-c
+	//fmt.Println(x,y,x + y)
 
 }
 
@@ -179,7 +175,6 @@ func fibonacci(n int) int {
 	return fibonacci(n-2) + fibonacci(n-1)
 }
 
-
 // func OneTo(i int)(int){
 // 	var a int = 1
 // 	if(i > 0){
@@ -189,15 +184,15 @@ func fibonacci(n int) int {
 // 	return 1
 // }
 
-func OneTo(n uint64)(result uint64){
-	if(n > 0){
+func OneTo(n uint64) (result uint64) {
+	if n > 0 {
 		result = n * OneTo(n-1)
 		return result
 	}
 	return 1
 }
 
-func printlnModel(a AnyModel) AnyModel{
+func printlnModel(a AnyModel) AnyModel {
 	fmt.Println(a.id)
 	fmt.Println(a.name)
 	fmt.Println(a.subTitle)
@@ -206,14 +201,13 @@ func printlnModel(a AnyModel) AnyModel{
 	return a
 }
 
-type AnyModel struct{
-	id int
-	name string
-	subTitle string
+type AnyModel struct {
+	id         int
+	name       string
+	subTitle   string
 	createTime string
 }
 
-
-func numbers()(int, int ,int){
-	return 1,2,3
+func numbers() (int, int, int) {
+	return 1, 2, 3
 }

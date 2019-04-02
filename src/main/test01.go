@@ -15,6 +15,9 @@ func init() {
 
 	// 设置日志级别为warn以上
 	log.SetLevel(log.DebugLevel)
+
+	//设置输出文件，行号，方法
+	log.SetReportCaller(true)
 }
 
 func main() {

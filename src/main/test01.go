@@ -2,7 +2,20 @@ package main
 
 import (
 	log "github.com/sirupsen/logrus"
+	"os"
 )
+
+func init() {
+	// 设置日志格式为json格式　自带的只有两种样式logrus.JSONFormatter{}和logrus.TextFormatter{}
+	log.SetFormatter(&log.JSONFormatter{})
+
+	// 设置将日志输出到标准输出（默认的输出为stderr，标准错误）
+	// 日志消息输出可以是任意的io.writer类型
+	log.SetOutput(os.Stdout)
+
+	// 设置日志级别为warn以上
+	log.SetLevel(log.DebugLevel)
+}
 
 func main() {
 	//fmt.Println("It is a test01!")
@@ -50,12 +63,16 @@ func main() {
 
 	//fmt.Println(utils.GetUnixToHourString(time.Now().Unix()))
 
-	log.Debug("Useful debugging information.")
-	log.Info("Something noteworthy happened!")
-	log.Warn("You should probably take a look at this.")
-	log.Error("Something failed but I'm not quitting.")
-	log.Fatal("Bye.")         //log之后会调用os.Exit(1)
-	log.Panic("I'm bailing.") //log之后会panic()
+	//log.Debug("Useful debugging information.")
+	//log.Info("Something noteworthy happened!")
+	//log.Warn("You should probably take a look at this.")
+	//log.Error("Something failed but I'm not quitting.")
+	//log.Fatal("Bye.")         //log之后会调用os.Exit(1)
+	//log.Panic("I'm bailing.") //log之后会panic()
+
+	requestLogger := log.WithFields(log.Fields{"request_id": 1, "user_ip": 1}) //对于固定不变的可以这样直接写死
+	requestLogger.Info("something happened on that request")
+	requestLogger.Warn("something not great happened")
 
 }
 

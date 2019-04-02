@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -44,16 +43,19 @@ func main() {
 	//fmt.Println(time.Unix(createTime,0).Format("2006-01-02 15:04:05"))
 
 	//createTime,err := time.Parse("2006-01-02 15:04:05","2019-04-01 12:00:01")
-	createTime, err := time.Parse("2006-01-02 15:04:05", "2019-04-01 12:00:01")
-	fmt.Println(createTime, err)
+	//createTime, err := time.Parse("2006-01-02 15:04:05", "2019-04-01 12:00:01")
+	//fmt.Println(createTime, err)
 	//
 	//fmt.Println(createTime.Unix())
 
-	//fmt.Println(utils.GetNow())
+	//fmt.Println(utils.GetUnixToHourString(time.Now().Unix()))
 
-	//fmt.Println(utils.GetTimesFormatYYYYMMDDHHMMSS(time.Now()))
-
-	//fmt.Println(utils.GetStringFormatYYYYMMDDHHMMSS(time.Now().String()))
+	log.Debug("Useful debugging information.")
+	log.Info("Something noteworthy happened!")
+	log.Warn("You should probably take a look at this.")
+	log.Error("Something failed but I'm not quitting.")
+	log.Fatal("Bye.")         //log之后会调用os.Exit(1)
+	log.Panic("I'm bailing.") //log之后会panic()
 
 }
 

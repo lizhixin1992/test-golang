@@ -2,29 +2,30 @@ package main
 
 import (
 	log "github.com/sirupsen/logrus"
-	"os"
+	"logger"
+	"utils"
 )
 
-func init() {
-	// 设置日志格式为json格式, 此处时间格式是当前时间　自带的只有两种样式logrus.JSONFormatter{}和logrus.TextFormatter{}
-	//log.SetFormatter(&log.JSONFormatter{})
-
-	// 设置日志格式为TextFormatter,设置输出的时间为当前时间（不设置的话就是服务启动的时间，比如0000）
-	//log.SetFormatter(&log.TextFormatter{
-	//	TimestampFormat: "2006-01-02T15:04:05.000",
-	//	FullTimestamp: true,
-	//})
-
-	// 设置将日志输出到标准输出（默认的输出为stderr，标准错误）
-	// 日志消息输出可以是任意的io.writer类型
-	log.SetOutput(os.Stdout)
-
-	// 设置日志级别为warn以上
-	log.SetLevel(log.DebugLevel)
-
-	//设置输出文件，行号，方法
-	log.SetReportCaller(true)
-}
+//func init() {
+//	// 设置日志格式为json格式, 此处时间格式是当前时间　自带的只有两种样式logrus.JSONFormatter{}和logrus.TextFormatter{}
+//	//log.SetFormatter(&log.JSONFormatter{})
+//
+//	// 设置日志格式为TextFormatter,设置输出的时间为当前时间（不设置的话就是服务启动的时间，比如0000）
+//	//log.SetFormatter(&log.TextFormatter{
+//	//	TimestampFormat: "2006-01-02T15:04:05.000",
+//	//	FullTimestamp: true,
+//	//})
+//
+//	// 设置将日志输出到标准输出（默认的输出为stderr，标准错误）
+//	// 日志消息输出可以是任意的io.writer类型
+//	log.SetOutput(os.Stdout)
+//
+//	// 设置日志级别为warn以上
+//	log.SetLevel(log.DebugLevel)
+//
+//	//设置输出文件，行号，方法
+//	log.SetReportCaller(true)
+//}
 
 func main() {
 	//fmt.Println("It is a test01!")
@@ -81,8 +82,10 @@ func main() {
 
 	requestLogger := log.WithFields(log.Fields{"request_id": 1, "user_ip": 1}) //对于固定不变的可以这样直接写死
 	requestLogger.Info("something happened on that request")
-	requestLogger.Warn("something not great happened")
+	//requestLogger.Warn("something not great happened")
 
+	utils.GetZeroHourUnix()
+	logger.Info("111")
 }
 
 type TestModel1 struct {

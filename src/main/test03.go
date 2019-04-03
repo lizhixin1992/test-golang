@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type Human struct {
 	name  string
@@ -26,9 +29,16 @@ func (e Employee) SayHi() {
 	fmt.Printf("Hi, I am %s, I work at %s. Call me on %s\n", e.name, e.company, e.phone)
 }
 
+func (h Human) String() string {
+	return "❰" + h.name + " - " + strconv.Itoa(h.age) + " years - ✆ " + h.phone + "❱"
+}
+
 func main() {
-	mark := Student{Human{"Mark", 25, "222-222-YYYY"}, "tow"}
-	sam := Employee{Human{"Sam", 45, "111-888-XXXX"}, "Golang Inc"}
-	mark.SayHi()
-	sam.SayHi()
+	//mark := Student{Human{"Mark", 25, "222-222-YYYY"}, "tow"}
+	//	//sam := Employee{Human{"Sam", 45, "111-888-XXXX"}, "Golang Inc"}
+	//	//mark.SayHi()
+	//	//sam.SayHi()
+
+	Bob := Human{"Bob", 39, "000-7777-XXX"}
+	fmt.Println("This Human is : ", Bob)
 }

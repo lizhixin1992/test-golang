@@ -1,9 +1,8 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
 	"logger"
-	"utils"
+	"time"
 )
 
 //func init() {
@@ -80,12 +79,13 @@ func main() {
 	//log.Fatal("Bye.")         //log之后会调用os.Exit(1)
 	//log.Panic("I'm bailing.") //log之后会panic()
 
-	requestLogger := log.WithFields(log.Fields{"request_id": 1, "user_ip": 1}) //对于固定不变的可以这样直接写死
-	requestLogger.Info("something happened on that request")
+	//requestLogger := log.WithFields(log.Fields{"request_id": 1, "user_ip": 1}) //对于固定不变的可以这样直接写死
+	//requestLogger.Info("something happened on that request")
 	//requestLogger.Warn("something not great happened")
 
-	utils.GetZeroHourUnix()
 	logger.Info("111")
+	time.Sleep(1 * time.Second)
+	logger.Info("222")
 }
 
 type TestModel1 struct {

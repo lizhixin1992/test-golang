@@ -12,6 +12,10 @@ func main() {
 	app.Use(recover.New())
 	app.Use(logger.New())
 
+	//错误处理（按照不同的状态可以分开自定义处理）
+	app.OnErrorCode(iris.StatusNotFound, notFound)
+	app.OnErrorCode(iris.StatusInsufficientStorage, internalServerError)
+
 	app.Handle("GET", "/", index)
 
 	party := app.Party("/party", partyTest)
@@ -58,4 +62,13 @@ func userProfileHandler(ctx iris.Context) { //
 func userMessageHandler(ctx iris.Context) {
 	id := ctx.Params().Get("id")
 	ctx.WriteString(id)
+}
+
+func notFound(ctx iris.Context) {
+	// 当http.status=400 时向客户端渲染模板$views_dir/errors/404.html
+	ctx.WriteString("errors/404.html")
+}
+
+func internalServerError(ctx iris.Context) {
+	ctx.WriteString("Oups something went wrong, try again")
 }

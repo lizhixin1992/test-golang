@@ -35,6 +35,10 @@ type Dog struct {
 	Breed string
 }
 
+func (p *Pet) Play() {
+	fmt.Println(p.Speak())
+}
+
 func (p *Pet) Speak() string {
 	return fmt.Sprintf("my name is %v", p.name)
 }
@@ -55,4 +59,7 @@ func main() {
 	fmt.Println(d.Name())
 	fmt.Println(d.name)
 	fmt.Println(d.Speak())
+
+	//Dog类型重载了Speak()方法。然而如果Pet有另外一个方法Play()被调用，但是Dog没有实现Play()的时候，Dog类型的Speak()方法则不会被调用
+	d.Play()
 }

@@ -46,7 +46,7 @@ func GetUnixToFormatString(timestamp int64, f string) string {
 }
 
 func GetUnixToString(timestamp int64) string {
-	return GetUnixToFormatString(timestamp, "2006-01-02 00:00:00")
+	return GetUnixToFormatString(timestamp, "2006-01-02 15:04:05")
 }
 
 func GetUnixToHourString(timestamp int64) string {
